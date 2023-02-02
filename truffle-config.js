@@ -17,8 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
-// const HDWallet = require('truffle-hdwallet-provider');
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const { INFURA_API_KEY, MNEMONIC } = process.env;
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -49,7 +50,16 @@ module.exports = {
     // },
     
     develop: {
-      port: 8545
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "5777",
+    },
+
+    goerli: {
+      provider: () => new HDWalletProvider(MNEMONIC, INFURA_API_KEY),
+      network_id: '5',
+      gas: 4500000,
+      gasPrice: 50000000000,
     },
 
     // Another network with more advanced options...

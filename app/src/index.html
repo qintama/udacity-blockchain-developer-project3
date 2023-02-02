@@ -1,37 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MetaCoin | Truffle Webpack Demo w/ Frontend</title>
-  </head>
-  <style>
-    input {
-      display: block;
-      margin-bottom: 12px;
-    }
-  </style>
-  <body>
-    <h1>MetaCoin — Example Truffle Dapp</h1>
-    <p>You have <strong class="balance">loading...</strong> META</p>
+<html lang="en">
 
-    <h1>Send MetaCoin</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wood SupplyChain</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
 
-    <label for="amount">Amount:</label>
-    <input type="text" id="amount" placeholder="e.g. 95" />
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Wood Supply Chain</h1>
+        <hr>
+        <p style="text-align: center;">Prove the authenticity of wood using the Ethereum blockchain.</p>
+    </div>
 
-    <label for="receiver">To address:</label>
-    <input
-      type="text"
-      id="receiver"
-      placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
-    />
+    <div id="ftc-harvest">
+        <h2>Product Overview</h2>
+        <div class="form-group">
+            SKU
+            <br>
+            <input class="input-field" type="number" id="sku" name="sku" value=1><br>
+            UPC
+            <br>
+            <input type="number" id="upc" name="upc" value=1><br>
+            Current Owner ID
+            <br>
+            <input type="text" id="ownerID" name="ownerID" value="0x2bb0435b85019b8D0345aAfd2cF739F7638F6d82" size="50"><br>
+            <div class=button-div>
+                <button class="btn-fetchOne" id="button" type="button" onclick="App.fetchWoodInfoBufferOne()">Fetch Data 1</button>
+                <button class="btn-fetchTwo" id="button" type="button" onclick="App.fetchWoodInfoBufferTwo()">Fetch Data 2</button>
+            </div>
+        </div>
+        <div class=form-break></div>
+        <h2>Wood Details</h2>
+        <div class="form-group">
+            Harvester ID
+            <br>
+            <input type="text" id="originHarvesterID" name="originHarvesterID" value="0x2bb0435b85019b8D0345aAfd2cF739F7638F6d82"
+                size="50"><br>
+            Harvester Name
+            <br>
+            <input type="text" id="originHarvesterName" name="originHarvesterName" value="John Doe"><br>
+            Forest Information
+            <br>
+            <input type="text" id="originForestInformation" name="originForestInformation" value="Yarra Valley"><br>
+            Forest Latitude
+            <br>
+            <input type="text" id="originForestLatitude" name="originForestLatitude" value="-38.239770"><br>
+            Forest Longitude
+            <br>
+            <input type="text" id="originForestLongitude" name="originForestLongitude" value="144.341490"><br>
+            <br>
+            <button class="btn-harvest" id="button" type="button" onclick="App.harvestWood()">Harvest</button>
+            <button class="btn-process" id="button" type="button" onclick="App.processWood()">Process</button>
+            <button class="btn-pack" id="button" type="button" onclick="App.packWood()">Pack</button>
+            <button class="btn-forsale" id="button" type="button" onclick="App.sellWood()">ForSale</button>
+        </div>
+        <div class=form-break></div>
+        <h2>Product Details</h2>
+        <div class="form-group">
+            Product Notes
+            <br>
+            <input type="text" id="productNotes" name="productNotes" value="Hard wood from Oak tree" size="60"><br>
+            Product Price
+            <br>
+            <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
+            Distributor ID
+            <br>
+            <input type="text" id="distributerID" name="distributerID" value="0x2bb0435b85019b8D0345aAfd2cF739F7638F6d82"
+                size="50">
+            <br>
+            Retailer ID
+            <br>
+            <input type="text" id="retailerID" name="retailerID" value="0x2bb0435b85019b8D0345aAfd2cF739F7638F6d82"
+                size="50"><br>
+            Consumer ID
+            <br>
+            <input type="text" id="consumerID" name="consumerID" value="0x2bb0435b85019b8D0345aAfd2cF739F7638F6d82"
+                size="50"><br>
+            <br>
+            <button class="btn-buy" id="button" type="button" onclick="App.buyWood()">Buy</button>
+            <button class="btn-ship" id="button" type="button" onclick="App.shipWood()">Ship</button>
+            <button class="btn-receive" id="button" type="button" onclick="App.receiveWood()">Receive</button>
+            <button class="btn-purchase" id="button" type="button" onclick="App.purchaseWood()">Purchase</button>
+        </div>
+        <div class=form-break></div>
+        <hr>
+    </div>
 
-    <button onclick="App.sendCoin()">Send MetaCoin</button>
+    <h2>Transaction History<span id="ftc-history"></span></h2>
+    <div>
+        <ul id="ftc-events">
+            <!-- Events will appear here from app.js -->
+        </ul>
+        <br>
+        <hr>
+    </div>
 
-    <p id="status"></p>
-    <p>
-      <strong>Hint:</strong> open the browser developer console to view any
-      errors and warnings.
-    </p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="js/web3.min.js"></script> -->
     <script src="index.js"></script>
-  </body>
+</body>
+
 </html>
